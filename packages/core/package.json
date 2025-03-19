@@ -1,5 +1,5 @@
 {
-  "name": "@feld-ai/jsonforms-core",
+  "name": "@jsonforms/core",
   "version": "3.5.1",
   "description": "Core module of JSON Forms",
   "repository": "https://github.com/feld-ai/jsonforms",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "name": "@jsonforms/core"
+    "name": "@feld-ai/jsonforms-core"
   },
   "directories": {
     "src": "src",

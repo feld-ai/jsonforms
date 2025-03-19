@@ -40,10 +40,10 @@ jobs:
 
       - name: Lint
         if: matrix.os == 'ubuntu-latest'
-        run: pnpm run lint --scope "*/core" --scope "*/angular" --scope "*/angular-material"
+        run: pnpm run lint --scope "@feld-ai/*" 
 
       - name: Test
         if: matrix.os == 'macos-latest'
         run: |
           set NODE_OPTIONS=--max_old_space_size=4096
-          pnpm run test --scope "*/core" --scope "*/angular" --scope "*/angular-material"
+          pnpm run test --scope "@feld-ai/*" 

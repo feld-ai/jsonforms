@@ -1,5 +1,5 @@
 {
-  "name": "@feld-ai/jsonforms-angular-material",
+  "name": "@jsonforms/angular-material",
   "version": "3.5.1",
   "description": "Material Renderer Set for Angular module of JSON Forms",
   "repository": "https://github.com/feld-ai/jsonforms",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "name": "@jsonforms/angular-material"
+    "name": "@feld-ai/jsonforms-angular-material"
 
   },
   "directories": {

@@ -1,5 +1,5 @@
 {
-  "name": "@feld-ai/jsonforms-angular",
+  "name": "@jsonforms/angular",
   "version": "3.5.1",
   "description": "Angular module of JSON Forms",
   "repository": "https://github.com/feld-ai/jsonforms",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "name": "@jsonforms/angular"
+    "name": "@feld-ai/jsonforms-angular"
   },
   "directories": {
     "src": "src",

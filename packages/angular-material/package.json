@@ -1,13 +1,15 @@
 {
-  "name": "@jsonforms/angular-material",
-  "version": "3.5.1-feld-0.0.2",
+  "name": "@feld-ai/jsonforms-angular-material",
+  "version": "3.5.1",
   "description": "Material Renderer Set for Angular module of JSON Forms",
   "repository": "https://github.com/feld-ai/jsonforms",
   "bugs": "https://github.com/feld-ai/jsonforms/issues",
   "homepage": "http://jsonforms.io/",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "name": "@jsonforms/angular-material"
+
   },
   "directories": {
     "src": "src",

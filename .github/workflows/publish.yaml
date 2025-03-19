@@ -83,4 +83,3 @@ jobs:
           cd ../angular-material && pnpm publish ${{  github.event.inputs.stable_release == 'true' && ' ' || '--tag next' }}
         env:
           NODE_AUTH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          NPM_CONFIG_PROVENANCE: 'true'

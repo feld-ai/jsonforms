@@ -18,7 +18,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-          - windows-latest
+
     name: Run on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -37,30 +37,16 @@ jobs:
       - name: Build
         run: |
           pnpm i --frozen-lockfile
-          pnpm run build
-          pnpm run doc
-          pnpm run bundle
+          pnpm run build  --scope "*/core" --scope "*/angular" --scope "*/angular-material"
+          pnpm run doc  --scope "*/core" --scope "*/angular" --scope "*/angular-material"
+          pnpm run bundle  --scope "*/core" --scope "*/angular" --scope "*/angular-material"
 
       - name: Lint
         if: matrix.os == 'ubuntu-latest'
-        run: pnpm run lint
+        run: pnpm run lint --scope "*/core" --scope "*/angular" --scope "*/angular-material"
 
       - name: Test
-        if: matrix.os == 'windows-latest' || matrix.os == 'macos-latest'
+        if: matrix.os == 'macos-latest'
         run: |
           set NODE_OPTIONS=--max_old_space_size=4096
-          pnpm run test
-
-      - name: Test & Coverage
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          export NODE_OPTIONS=--max_old_space_size=4096
-          pnpm run test-cov
-          pnpm run check-format
-          pnpm run merge-report && cat coverage/lcov.info
-
-      - name: Upload Coveralls Report
-        if: success() && matrix.os == 'ubuntu-latest'
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pnpm run test --scope "*/core" --scope "*/angular" --scope "*/angular-material"

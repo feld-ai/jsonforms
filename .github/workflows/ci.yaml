@@ -34,9 +34,9 @@ jobs:
       - name: Build
         run: |
           pnpm i --frozen-lockfile
-          pnpm run build  --scope "*/core" --scope "*/angular" --scope "*/angular-material"
-          pnpm run doc  --scope "*/core" --scope "*/angular" --scope "*/angular-material"
-          pnpm run bundle  --scope "*/core" --scope "*/angular" --scope "*/angular-material"
+          pnpm run build  
+          pnpm run doc  
+          pnpm run bundle  
 
       - name: Lint
         if: matrix.os == 'ubuntu-latest'

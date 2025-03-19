@@ -2,12 +2,12 @@
   "name": "@jsonforms/angular",
   "version": "3.5.1",
   "description": "Angular module of JSON Forms",
-  "repository": "https://github.com/eclipsesource/jsonforms",
-  "bugs": "https://github.com/eclipsesource/jsonforms/issues",
+  "repository": "https://github.com/feld-ai/jsonforms",
+  "bugs": "https://github.com/feld-ai/jsonforms/jsonforms/issues",
   "homepage": "http://jsonforms.io/",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "directories": {
     "src": "src",

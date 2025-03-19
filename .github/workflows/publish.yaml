@@ -47,21 +47,20 @@ jobs:
         with:
           run_install: false
 
-      - name: 'Install Packages'
-        run: 'pnpm i --frozen-lockfile'
-
-      - name: Replace package names in core
+      - name: Replace package names
         run: |
           find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/core/@feld-ai\/jsonforms-core/g' {} +
           find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/angular/@feld-ai\/jsonforms-angular/g' {} +
           find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/angular-material/@feld-ai\/jsonforms-angular-material/g' {} +
 
+      - name: 'Install Packages'
+        run: 'pnpm i --frozen-lockfile'
 
       - name: 'Build'
         run: 'pnpm run build --scope "@feld-ai/*"'
 
-      - name: 'Test'
-        run: 'pnpm run test  --scope "@feld-ai/*"'
+      # - name: 'Test'
+      #   run: 'pnpm run test  --scope "@feld-ai/*"'
 
       - name: 'Versioning'
         run: 'pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish --yes'

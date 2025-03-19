@@ -50,30 +50,37 @@ jobs:
       - name: 'Install Packages'
         run: 'pnpm i --frozen-lockfile'
 
+      - name: Replace package names in core
+        run: |
+          find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/core/@feld-ai\/jsonforms-core/g' {} +
+          find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/angular/@feld-ai\/jsonforms-angular/g' {} +
+          find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/angular-material/@feld-ai\/jsonforms-angular-material/g' {} +
+
+
       - name: 'Build'
-        run: 'pnpm run build --scope "*/core" --scope "*/angular" --scope "*/angular-material"'
+        run: 'pnpm run build --scope "@feld-ai/*"'
 
       - name: 'Test'
-        run: 'pnpm run test  --scope "*/core" --scope "*/angular" --scope "*/angular-material"'
+        run: 'pnpm run test  --scope "@feld-ai/*"'
 
       - name: 'Versioning'
         run: 'pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish --yes'
 
       - name: 'Adjust PeerDependencies'
         run: |
-          cd packages/angular && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
-          cd ../angular-material && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}" && pnpm pkg set peerDependencies.@jsonforms/angular="${{ github.event.inputs.next_version }}"
+          cd packages/angular && pnpm pkg set peerDependencies.@feld-ai/jsonforms-core="${{ github.event.inputs.next_version }}"
+          cd ../angular-material && pnpm pkg set peerDependencies.@feld-ai/jsonforms-core="${{ github.event.inputs.next_version }}" && pnpm pkg set peerDependencies.@feld-ai\/jsonforms-angular="${{ github.event.inputs.next_version }}"
 
       - name: 'Tag and Commit'
         run: |
           git add -A && git commit --amend --no-edit
           git tag v${{ github.event.inputs.next_version }} -f
 
-      - name: 'push'
-        if: github.event.inputs.skip_push == 'false'
-        run: |
-          git push
-          git push origin v${{ github.event.inputs.next_version }}
+      # - name: 'push'
+      #   if: github.event.inputs.skip_push == 'false'
+      #   run: |
+      #     git push
+      #     git push origin v${{ github.event.inputs.next_version }}
 
       - name: 'Publish to GitHub Packages'
         if: github.event.inputs.skip_publish == 'false'

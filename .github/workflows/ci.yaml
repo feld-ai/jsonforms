@@ -36,6 +36,8 @@ jobs:
           find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/core/@feld-ai\/jsonforms-core/g' {} +
           find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/angular/@feld-ai\/jsonforms-angular/g' {} +
           find  . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/@jsonforms\/angular-material/@feld-ai\/jsonforms-angular-material/g' {} +
+          find  . -type f \( -name "package.json"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/jsonforms-angular.mjs/feld-ai-jsonforms-angular.mjs/g' {} +
+          find  . -type f \( -name "package.json"  \) -not -path "*/node_modules/*" -not -path "*/dist/*" -exec sed -i  's/jsonforms-angular-material.mjs/feld-ai-jsonforms-angular-material.mjs/g' {} +
 
 
       - name: Build
@@ -49,8 +51,8 @@ jobs:
       #   if: matrix.os == 'ubuntu-latest'
       #   run: pnpm run lint --scope "@feld-ai/*" 
 
-      # - name: Test
-      #   if: matrix.os == 'macos-latest'
-      #   run: |
-      #     set NODE_OPTIONS=--max_old_space_size=4096
-      #     pnpm run test --scope "@feld-ai/*" 
+      - name: Test
+        if: matrix.os == 'macos-latest'
+        run: |
+          set NODE_OPTIONS=--max_old_space_size=4096
+          pnpm run test --scope "@feld-ai/*" 

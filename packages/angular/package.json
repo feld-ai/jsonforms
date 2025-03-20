@@ -34,7 +34,7 @@
     "layout",
     "customization"
   ],
-  "module": "./lib/fesm2022/jsonforms-angular.mjs",
+  "module": "./lib/fesm2022/feld-ai-jsonforms-angular.mjs",
   "typings": "./lib/index.d.ts",
   "scripts": {
     "build": "node ./build-package.js",
